@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LitTask - Регистрация</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<header>
+<div class="logo">
+<img src="images/logo.png" alt="LitTask Logo">
+<h1>LitTask</h1>
+</div>
+<nav>
+<a href="login.html">Войти</a>
+<a href="index.html">Главная</a>
+</nav>
+</header>
+
+<main>
+<section class="auth-section">
+<h2>Регистрация</h2>
+<form id="registerForm">
+<input type="text" id="username" placeholder="Имя пользователя" required>
+<input type="email" id="email" placeholder="Email" required>
+<input type="password" id="password" placeholder="Пароль" required>
+<input type="password" id="confirmPassword" placeholder="Подтвердите пароль" required>
+<button type="submit">Зарегистрироваться</button>
+</form>
+<p>Уже есть аккаунт? <a href="login.html">Войдите</a></p>
+</section>
+</main>
+
+<footer>
+<p>© 2024 LitTask. Сделано с душой.</p>
+</footer>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+e.preventDefault();
+
+let username = document.getElementById('username').value;
+let email = document.getElementById('email').value;
+let password = document.getElementById('password').value;
+let confirmPassword = document.getElementById('confirmPassword').value;
+
+if (password !== confirmPassword) {
+alert('Пароли не совпадают!');
+return;
+}
+
+// Сохраняем данные в localStorage
+localStorage.setItem('username', username);
+localStorage.setItem('email', email);
+localStorage.setItem('password', password);
+localStorage.setItem('registrationDate', new Date().toLocaleDateString());
+
+alert('Регистрация прошла успешно!');
+window.location.href = 'login.html';
+});
+</script>
+
+</body>
+</html>
